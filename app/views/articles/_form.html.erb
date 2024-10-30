@@ -1,0 +1,25 @@
+<div class="container">
+  <% if @article.errors.any? %>
+  <h2> The following errors prevented the article from being saved </h2>
+  <ul>
+  <% @article.errors.full_messages.each do |error_msg| %>
+    <li style="color: red" ><%= error_msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @article do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control'%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, class: 'form-label'  %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <p><%= form.submit  %></p>
+<% end %>
+
+</div>

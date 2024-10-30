@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Showing article details</h1>
+  <div class="card text-center">
+    <div class="card-header">
+      Article #<%= @article.id %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @article.title %></h5>
+      <p class="card-text"><%= @article.description %></p>
+      <%= link_to 'Edit', edit_article_path(@article),  class: 'btn btn-outline-primary'%>
+      <%= link_to 'Delete', article_path(@article), class: 'btn btn-outline-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <%= link_to 'Return to articles', articles_path, class: 'btn btn-outline-secondary' %>
+    </div>
+    <div class="card-footer text-body-secondary">
+      <%= @article.created_at %>
+    </div>
+  </div>
+
+</div>
+
+

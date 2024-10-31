@@ -12,7 +12,7 @@
       <%= link_to 'Return to articles', articles_path, class: 'btn btn-outline-secondary' %>
     </div>
     <div class="card-footer text-body-secondary">
-      <%= @article.created_at %>
+      Created <%= time_ago_in_words(@article.created_at) %> | Updated <%= time_ago_in_words(@article.created_at) %>
     </div>
   </div>
 

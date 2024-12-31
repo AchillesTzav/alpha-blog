@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="border rounded mt-2">
+    <div class="text-center my-2">
+      <h1><%= @user.username %>'s profile</h1>
+    </div>
+  
+    <div class="text-center">
+      <img src="/giphy.webp" class="rounded-circle shadow " width="80" height="80" alt="giphy">
+    </div>
+  
+    <div class="text-center my-4">
+      <%= link_to 'Edit your profile', edit_user_path(@user), class: 'btn btn-secondary btn-sm' %>
+    </div>
+  </div>
+
+  <div class="text-center my-2">
+    <h3>Articles</h3>
+  </div>
+
+  <div class="text-center">
+    <%= render 'articles/article', obj: @user.articles %>
+  </div>
+  
+</div>

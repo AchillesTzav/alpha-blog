@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="text-center"> 
+    <h1>Alpha Bloggers</h1>
+  </div>
+  
+  <% @users.each do |user| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-header font-italic">
+            <%= link_to user.username, user %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <div class="text-center">
+              <img src="/giphy.webp" class="rounded-circle shadow " width="80" height="80" alt="giphy">
+            </div>
+          </h5>
+          <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
+          <%= link_to 'View Profile', user, class: 'btn btn-secondary btn-sm'%>
+          <%= link_to 'Edit Profile', edit_user_path(user), class: 'btn btn-info btn-sm'%>
+        </div>
+        
+        <div class="card-footer text-muted">
+            <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>  
+        </div>
+       
+      </div>
+    </div>
+  </div>  
+<% end %>
+  
+ 
+</div>

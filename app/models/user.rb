@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # self references each object of the user class
   # when it comes to email field before saving it runs the downcase method
   before_save { self.email = email.downcase}
+  has_secure_password
   has_many :articles
   validates :username, presence: true,
               length: { minimun: 3, maximum: 25 },
@@ -14,5 +15,6 @@ class User < ApplicationRecord
               uniqueness: { case_sensitive: false },
               format: { with: VALID_EMAIL_REGEX }
 
-  has_secure_password
+
+
 end

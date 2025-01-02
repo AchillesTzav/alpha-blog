@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Login</h1>
+  
+  <div class="container">
+  
+   
+    
+    <%= form_with model: @session do |form| %>
+      <div class="mb-3">
+        <%= form.label :email, class: 'form-label'  %>
+        <%= form.email_field :email, class: 'form-control', placeholder: 'Enter your email' %>
+      </div>
+    
+      <div class="mb-3">
+        <%= form.label :password, class: 'form-label'  %>
+        <%= form.password_field :password, class: 'form-control', placeholder: 'Enter your password' %>
+      </div>
+    
+      <p><%= form.submit 'login', class: 'btn btn-primary' %></p>
+    <% end %>
+    
+    </div>
+  
+ 
+</div>

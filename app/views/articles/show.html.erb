@@ -13,8 +13,10 @@
     <div class="card-body">
       <h5 class="card-title"><%= @article.title %></h5>
       <p class="card-text"><%= @article.description %></p>
-      <%= link_to 'Edit', edit_article_path(@article),  class: 'btn btn-outline-primary'%>
-      <%= link_to 'Delete', article_path(@article), class: 'btn btn-outline-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <% if logged_in? && @article.user == current_user %>
+        <%= link_to 'Edit', edit_article_path(@article),  class: 'btn btn-outline-primary'%>
+        <%= link_to 'Delete', article_path(@article), class: 'btn btn-outline-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <% end %>
       <%= link_to 'Return to articles', articles_path, class: 'btn btn-outline-secondary' %>
     </div>
     <div class="card-footer text-body-secondary">

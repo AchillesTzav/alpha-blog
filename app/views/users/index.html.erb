@@ -22,9 +22,15 @@
           </h5>
           <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
           <%= link_to 'View Profile', user, class: 'btn btn-secondary btn-sm'%>
-          <% if logged_in? && user == current_user %>
-            <%= link_to 'Edit Profile', edit_user_path(user), class: 'btn btn-info btn-sm'%>
-          <% end %>
+          <% if logged_in? %> 
+            <% if user == current_user %>
+              <%= link_to 'Edit Profile', edit_user_path(user), class: 'btn btn-info btn-sm'%>
+            <% end %>
+
+            <% if current_user.admin? %>
+              <%= link_to 'Delete user', user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          <% end %>    
         </div>
         
         <div class="card-footer text-muted">

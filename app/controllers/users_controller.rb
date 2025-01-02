@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil
+    session[:user_id] = nil if @user == current_user # the admin also can delete other users, if i just set to nil the session it wll log the admon out
     flash[:warning] = "Acount and all associated articled successfully deleted!"
     redirect_to articles_path
   end
@@ -58,8 +58,8 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @user
-      flash[:warning] = "You can only edit your own account"
+    if current_user != @user && !current_user.admin?
+      flash[:warning] = "You can only edit or delete your own account"
       redirect_to @user
     end
   end

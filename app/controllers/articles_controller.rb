@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  #before action runs the given action in this case :find_article
-  #in every method unless you specify
-  #in which methods you want to run the action before these methods
-  before_action :find_article, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:show, :index]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  # before action runs the given action in this case :find_article
+  # in every method unless you specify
+  # in which methods you want to run the action before these methods
+  before_action :find_article, only: [ :show, :edit, :update, :destroy ]
+  before_action :require_user, except: [ :show, :index ]
+  before_action :require_same_user, only: [ :edit, :update, :destroy ]
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 5)
@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    debugger
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
@@ -48,7 +49,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, category_ids: [])
     end
 
     def find_article

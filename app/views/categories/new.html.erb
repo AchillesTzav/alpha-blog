@@ -2,20 +2,10 @@
   <h1>Create a new category</h1>
 
   <div class="container">
-  
-    <%= render 'shared/errors', obj: @category %>
-    
-    <%= form_with model: @category do |form| %>
-      <div class="mb-3">
-        <%= form.label :name, 'Category name', class: 'form-label' %>
-        <%= form.text_field :name, class: 'form-control', placeholder: 'Enter a categgory name...'%>
-      </div>
-  
-    
-      <p><%= form.submit( class: 'btn btn-primary') %></p>
-    <% end %>
-    
-    </div>
 
+    <%= render 'form' %>
+  </div>
+
+  <%= link_to 'Cancel and return to categories', categories_path, class: 'btn btn-outline-secondary' %>
 
 </div>
